@@ -1,0 +1,32 @@
+<section class="container" xmlns="http://www.w3.org/1999/html">
+  <h1>Signal Visualization</h1>
+  <div class="row">
+    <div class="widget-content" id="svg">
+      <audio id="audioElement" src="./media/moby_bring_sally_up.mp3" web-audio></audio>
+      <div>
+        <div class="btn-group" data-toggle="buttons">
+          <label for="play" class="btn btn-primary inverse"
+                 onclick="document.getElementById('audioElement').play()">
+            <input type="radio" id="play" name="options" value="1" /> Play the Audio
+          </label>
+          <label for="pause" class="btn btn-primary inverse"
+                 onclick="document.getElementById('audioElement').pause()">
+            <input type="radio" id="pause" name="options" value="2" /> Pause the Audio
+          </label>
+        </div>
+
+        <div class="btn-group" data-toggle="buttons">
+          <label for="increase" class="btn btn-primary no-checked"
+                 onclick="document.getElementById('audioElement').volume+=0.1">
+            <input type="checkbox" id="increase" name="increase" /> Increase Volume
+          </label>
+          <label for="decrease" class="btn btn-primary no-checked"
+                 onclick="document.getElementById('audioElement').volume-=0.1">
+            <input type="checkbox" id="decrease" name="decrease" /> Decrease Volume
+          </label>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

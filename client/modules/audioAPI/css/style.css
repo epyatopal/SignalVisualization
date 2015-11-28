@@ -1,0 +1,15 @@
+.inverse.active {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.inverse.active:hover {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #398439;
+}
+.no-checked.active{
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
