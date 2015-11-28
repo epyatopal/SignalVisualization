@@ -26,6 +26,16 @@
           </label>
         </div>
 
+        <span>Resolution</span>
+        <label for="resolution" class="btn btn-default">
+          <input class="slider" type="range" min="100" max="1024"
+                 value="{{audioAPI.resolution}}"
+                 ng-model="audioAPI.resolution"
+                 ng-change="audioAPI.emitResolution()"
+                 id="resolution" name="resolution" />
+        </label>
+
+
       </div>
     </div>
   </div>

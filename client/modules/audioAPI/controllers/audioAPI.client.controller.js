@@ -7,7 +7,12 @@ angular.module('audioAPI').controller('AudioAPIController', AudioAPIController);
 
 function AudioAPIController($scope) {
 	var self = this;
+	self.resolution = 200;
+	self.emitResolution = emitResolution;
 
+	function emitResolution(){
+		$scope.$broadcast('resolution', self.resolution)
+	}
 
 }
 }).call();

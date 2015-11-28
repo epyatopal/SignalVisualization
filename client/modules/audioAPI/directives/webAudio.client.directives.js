@@ -24,27 +24,38 @@
       audioSrc.connect(analyser);
       audioSrc.connect(audioCtx.destination);
 
-      var frequencyData = new Uint8Array(200);
+      var frequencyData = new Uint8Array(scope.audioAPI.resolution);
+
+      //listen change resolution
+      scope.$on('resolution', function(){
+        frequencyData = new Uint8Array(scope.audioAPI.resolution);
+        removeChart();
+        createChart();
+        renderChart();
+      });
 
       var svgHeight = '300';
       var svgWidth = '1200';
       var barPadding = '1';
+      var svg;
 
       function createSvg(parent, height, width) {
         return d3.select(parent).append('svg').attr('height', height).attr('width', width);
       }
 
-      var svg = createSvg('#svg', svgHeight, svgWidth);
+      function createChart() {
+        svg = createSvg('#svg', svgHeight, svgWidth);
 
-      // Create our initial D3 chart.
-      svg.selectAll('rect')
-          .data(frequencyData)
-          .enter()
-          .append('rect')
-          .attr('x', function (d, i) {
-            return i * (svgWidth / frequencyData.length);
-          })
-          .attr('width', svgWidth / frequencyData.length - barPadding);
+        // Create our initial D3 chart.
+        svg.selectAll('rect')
+            .data(frequencyData)
+            .enter()
+            .append('rect')
+            .attr('x', function (d, i) {
+              return i * (svgWidth / frequencyData.length);
+            })
+            .attr('width', svgWidth / frequencyData.length - barPadding);
+      }
 
       // Continuously loop and update chart with frequency data.
       function renderChart() {
@@ -67,7 +78,12 @@
             });
       }
 
+      function removeChart(){
+        var t = document.getElementsByTagName('svg')
+        t[0].remove()
+      }
       // Run the loop
+      createChart();
       renderChart();
     }
   }
