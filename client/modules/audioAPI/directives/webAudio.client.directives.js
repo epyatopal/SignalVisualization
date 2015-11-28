@@ -31,7 +31,6 @@
         frequencyData = new Uint8Array(scope.audioAPI.resolution);
         removeChart();
         createChart();
-        renderChart();
       });
 
       var svgHeight = '300';
